@@ -50,7 +50,7 @@ Example Playbook
       roles:
          - { role: tcosta84.supervisor }
 
-    With optional variables:
+With optional variables:
 
     - hosts: servers
       vars:
