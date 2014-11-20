@@ -1,0 +1,31 @@
+[unix_http_server]
+file={{ supervisor_sock }}                                                          ; path to your socket file
+
+{% if supervisor_web_host is defined and supervisor_web_port is defined and supervisor_web_user is defined and supervisor_web_pass is defined %}
+[inet_http_server]                                                                  ; inet (TCP) server disabled by default
+port={{ supervisor_web_host }}:{{ supervisor_web_port }}                            ; (ip_address:port specifier, *:port for all iface)
+username={{ supervisor_web_user }}                                                  ; (default is no username (open server))
+password={{ supervisor_web_pass }}                                                  ; (default is no password (open server))
+{% endif %}
+
+[supervisord]
+logfile={{ supervisor_logfile }}                                                    ; supervisord log file
+logfile_maxbytes={{ supervisor_logfile_maxbytes }}                                  ; maximum size of logfile before rotation
+logfile_backups=10                                                                  ; number of backed up logfiles
+loglevel={{ supervisor_loglevel }}                                                  ; info, debug, warn, trace
+pidfile={{ supervisor_pidfile }}                                                    ; pidfile location
+nodaemon={{ supervisor_nodaemon }}                                                  ; run supervisord as a daemon
+minfds={{ supervisor_minfds }}                                                      ; number of startup file descriptors
+minprocs={{ supervisor_minprocs }}                                                  ; number of process descriptors
+user={{ supervisor_user }}                                                          ; default user
+childlogdir={{ supervisor_childlogdir }}                                            ; where child log files will live
+
+
+[rpcinterface:supervisor]
+supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface
+
+[supervisorctl]
+serverurl=unix://{{ supervisor_sock }}                                              ; use unix:// schem for a unix sockets.
+
+[include]
+files={{ supervisor_programs_dir }}/*

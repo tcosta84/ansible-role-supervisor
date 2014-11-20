@@ -1,0 +1,11 @@
+---
+
+- hosts: example
+  remote_user: root
+  vars:
+    - supervisor_web_host: "{{ inventory_hostname }}"
+    - supervisor_web_port: 9001
+    - supervisor_web_user: admin
+    - supervisor_web_pass: 12345
+  roles:
+    - ansible-role-supervisor
