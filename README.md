@@ -1,5 +1,5 @@
-Role Name
-=========
+Ansible Role: Supervisor
+========================
 
 Installs minimal Supervisor on CentOS 6.5
 
