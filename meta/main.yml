@@ -16,4 +16,4 @@ galaxy_info:
 
 dependencies:
   - { role: tcosta84.yum }
-  - { role: ansible-role-python }
+  - { role: tcosta84.python }
