@@ -5,7 +5,7 @@ galaxy_info:
   description: Install minimal Supervisor on CentOS
   company: 
   license: license (GPLv2, CC-BY, etc)
-  min_ansible_version: 1.2
+  min_ansible_version: 1.7
   platforms:
   - name: EL
     versions:
